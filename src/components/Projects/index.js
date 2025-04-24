@@ -1,50 +1,73 @@
 import React, { useState } from 'react';
-import { Container, Wrapper, Title, Desc, CardContainer, ToggleButtonGroup, ToggleButton, Divider } from './ProjectsStyle';
+import PropTypes from 'prop-types';
+import {
+  Container,
+  Wrapper,
+  Title,
+  Desc,
+  CardContainer,
+  ToggleButtonGroup,
+  ToggleButton,
+  Divider,
+} from './ProjectsStyle';
 import ProjectCard from '../Cards/ProjectCards';
 import { projects } from '../../data/constants';
 
-const Projects = ({ openModal, setOpenModal }) => {
-  const [toggle, setToggle] = useState('all');
+const categories = ['all', 'web app', 'android app', 'machine learning'];
 
-  // Categories for the toggle buttons
-  const categories = ['all', 'web app', 'android app', 'machine learning'];
+function Projects({ openModal, setOpenModal }) {
+  const [selected, setSelected] = useState('all');
+
+  // Filter helper
+  const visibleProjects =
+    selected === 'all'
+      ? projects
+      : projects.filter(p => p.category === selected);
 
   return (
     <Container id="projects">
       <Wrapper>
         <Title>Projects</Title>
         <Desc>
-          I have worked on a wide range of projects. From web apps to android apps. Here are some of my projects.
+          I have worked on a wide range of projects — from web apps to Android
+          applications. Here are a few highlights.
         </Desc>
+
         <ToggleButtonGroup>
-          {categories.map((category) => (
-            <React.Fragment key={category}>
-              <ToggleButton 
-                active={toggle === category} 
-                value={category} 
-                onClick={() => setToggle(category)}
+          {categories.map(cat => (
+            <React.Fragment key={cat}>
+              <ToggleButton
+                active={selected === cat}
+                onClick={() => setSelected(cat)}
               >
-                {category.toUpperCase().replace(' ', "'S")}
+                {cat.toUpperCase()}
               </ToggleButton>
               <Divider />
             </React.Fragment>
           ))}
         </ToggleButtonGroup>
+
         <CardContainer>
-          {/* Display projects based on the selected category */}
-          {(toggle === 'all' ? projects : projects.filter((project) => project.category === toggle))
-            .map((project) => (
-              <ProjectCard 
-                key={project.id}  // Ensure each project has a unique 'id'
-                project={project} 
-                openModal={openModal} 
-                setOpenModal={setOpenModal}
-              />
-            ))}
+          {visibleProjects.map((project, idx) => (
+            <ProjectCard
+              key={project.id ?? idx}
+              project={project}
+              setOpenModal={setOpenModal}
+            />
+          ))}
         </CardContainer>
       </Wrapper>
     </Container>
   );
+}
+
+/* -------- PropTypes to silence react/prop‑types rule -------- */
+Projects.propTypes = {
+  openModal: PropTypes.shape({
+    state: PropTypes.bool,
+    project: PropTypes.object,
+  }),
+  setOpenModal: PropTypes.func.isRequired,
 };
 
 export default Projects;

@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import _default from '../../themes/default';
-
 
 export const SocialMediaIcons = styled.div`
   display: flex;
@@ -13,6 +11,7 @@ export const SocialMediaIcon = styled.a`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }

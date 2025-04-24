@@ -1,20 +1,20 @@
 export const Bio = {
-  name: "Usman Murtaza", // Your name
+  name: 'Usman Murtaza',
   roles: [
-    "Full Stack Developer",
-    "Web Developer",
-    "UI/UX Designer",
-    "Programmer",
+    'Full Stack Developer',
+    'Web Developer',
+    'UI/UX Designer',
+    'Programmer',
   ],
   description:
-    "A motivated and versatile Full Stack Developer with a passion for continuous learning and innovation. Dedicated to delivering high-quality solutions with a positive attitude and a growth mindset. Always eager to tackle new challenges and contribute meaningfully to impactful projects.",
-  github: "https://github.com/Usmanmurtaza2004",
-  resume: "https://drive.google.com/file/d/1Pm5g6MX-UqaGQfgHyRQzWAEZzSrm6jNw/view?usp=sharing",
-  linkedin: "https://www.linkedin.com/in/usmanmurtaza01/",
-  twitter: "https://twitter.com/usmanmurtaza2004",
-  insta: "https://www.instagram.com/usmannmurtazaa/",
-  facebook: "https://www.facebook.com/princeusman04",
-
+    'A motivated and versatile Full Stack Developer with a passion for continuous learning and innovation. Dedicated to delivering high‑quality solutions with a positive attitude and a growth mindset. Always eager to tackle new challenges and contribute meaningfully to impactful projects.',
+  github: 'https://github.com/Usmanmurtaza2004',
+  resume:
+    'https://drive.google.com/file/d/1Pm5g6MX-UqaGQfgHyRQzWAEZzSrm6jNw/view?usp=sharing',
+  linkedin: 'https://www.linkedin.com/in/usmanmurtaza01/',
+  twitter: 'https://twitter.com/usmanmurtaza2004',
+  insta: 'https://www.instagram.com/usmannmurtazaa/',
+  facebook: 'https://www.facebook.com/princeusman04',
 };
 
 export const skills = [
@@ -161,32 +161,35 @@ export const experiences = [
 export const education = [
   {
     id: 0,
-    img: "public/ilma_logo.jfif",
-    school: "Ilma University, Karachi",
-    date: "Oct 2024 - Present",
-    grade: "N/A",
-    desc: "Currently pursuing a Bachelor's degree in Computer Science (BSCS). Focus on full-stack web development, machine learning, and modern web technologies.",
-    degree: "Bachelor of Science - Computer Science (BSCS)",
+    /* ✅  import images with `process.env.PUBLIC_URL` so CRA finds them */
+    img: `${process.env.PUBLIC_URL}/ilma_logo.jfif`,
+    school: 'Ilma University, Karachi',
+    date: 'Oct 2024 – Present',
+    grade: 'N/A',
+    desc:
+      'Currently pursuing a BSCS with focus on full‑stack web development, machine learning, and modern web technologies.',
+    degree: 'Bachelor of Science — Computer Science',
   },
   {
     id: 1,
-    img: "https://apsacsaddarkhi.edu.pk/",
-    school: "Army Public College, Saddar",
-    date: "2022 - 2024",
-    grade: "Pre-Engineering",
-    desc: "Completed my Intermediate (FSc) in Pre-Engineering, gaining foundational knowledge in mathematics, physics, and computing.",
-    degree: "FSc Pre-Engineering",
+    img: 'https://apsacsaddarkhi.edu.pk/', // online logo url, keep as‑is
+    school: 'Army Public College, Saddar',
+    date: '2022 – 2024',
+    grade: 'Pre‑Engineering',
+    desc:
+      'Completed Intermediate (FSc) in Pre‑Engineering, gaining foundational knowledge in mathematics, physics, and computing.',
+    degree: 'FSc Pre‑Engineering',
   },
   {
     id: 2,
-    img: "public/fazaia_logo.png",
-    school: "Fazaia Intermediate College, PAF Base Korangi Creek",
-    date: "2018 - 2022",
-    grade: "Bio Science",
-    desc: "Completed my Matriculation in Bio Science, focusing on subjects like biology, chemistry, and physics.",
-    degree: "Matriculation - Bio Science",
-  }
-  
+    img: `${process.env.PUBLIC_URL}/fazaia_logo.png`,
+    school: 'Fazaia Intermediate College, PAF Base Korangi Creek',
+    date: '2018 – 2022',
+    grade: 'Bio Science',
+    desc:
+      'Completed Matriculation in Bio Science, focusing on biology, chemistry, and physics.',
+    degree: 'Matriculation — Bio Science',
+  },
 ];
 
 export const projects = [

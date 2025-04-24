@@ -1,107 +1,110 @@
 import React from 'react';
 import styled from 'styled-components';
-import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
+import {
+  Timeline,
+  TimelineItem,
+  TimelineSeparator,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+} from '@mui/lab';
 import { education } from '../../data/constants';
 import EducationCard from '../Cards/EducationCard';
 
-const Container = styled.div`
+/* ---------- styled‑components ---------- */
+
+const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
   align-items: center;
-  padding: 0px 0px 60px 0px;
+  padding: 0 0 60px;
+
   @media (max-width: 960px) {
-    padding: 0px;
+    padding: 0;
   }
 `;
 
 const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
   max-width: 1350px;
-  padding: 40px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
+  padding-top: 40px;
 `;
 
-const Title = styled.div`
-  font-size: 42px;
-  text-align: center;
-  font-weight: 600;
+const Title = styled.h2`
   margin-top: 20px;
+  font-size: 42px;
+  font-weight: 600;
   color: ${({ theme }) => theme.text_primary};
+  text-align: center;
+
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 32px;
   }
 `;
 
-const Desc = styled.div`
+const Desc = styled.p`
+  max-width: 600px;
   font-size: 18px;
   text-align: center;
-  max-width: 600px;
   color: ${({ theme }) => theme.text_secondary};
+
   @media (max-width: 768px) {
     margin-top: 12px;
     font-size: 16px;
   }
 `;
 
-const TimelineSection = styled.div`
+const TimelineWrapper = styled.div`
   width: 100%;
   max-width: 1000px;
   margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+
   @media (max-width: 660px) {
-    align-items: end;
+    .MuiTimeline-root {
+      margin-left: 0; /* keeps items left‑aligned on small screens */
+    }
   }
 `;
 
-const EducationSection = () => {
-  return (
-    <Container id="education">
-      <Wrapper>
-        <Title>Education</Title>
-        <Desc>
-          My education has been a journey of self-discovery and growth. My educational details are as follows.
-        </Desc>
-        <TimelineSection>
-          <Timeline>
-            {education.map((edu, index) => (
-              <TimelineItem key={index}>
-                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <EducationCard education={edu} />
-                </TimelineContent>
-                <TimelineSeparator>
-                  <TimelineDot variant="outlined" color="secondary" />
-                  {index !== education.length - 1 && (
-                    <TimelineConnector style={{ background: '#854CE6' }} />
-                  )}
-                </TimelineSeparator>
-              </TimelineItem>
-            ))}
-          </Timeline>
-        </TimelineSection>
-      </Wrapper>
-    </Container>
-  );
-};
+/* ---------------- component ------------- */
+
+const EducationSection = () => (
+  <Container id="education">
+    <Wrapper>
+      <Title>Education</Title>
+      <Desc>
+        My education has been a journey of self‑discovery and growth. Here are the key milestones.
+      </Desc>
+
+      <TimelineWrapper>
+        <Timeline position="alternate">
+          {education.map((edu, idx) => (
+            <TimelineItem key={edu.school}>
+              <TimelineContent sx={{ py: 2, px: 0 }}>
+                <EducationCard education={edu} />
+              </TimelineContent>
+
+              <TimelineSeparator>
+                <TimelineDot
+                  variant="outlined"
+                  sx={{ borderColor: 'primary.main' }}
+                  aria-label="Education timeline marker"
+                />
+                {idx < education.length - 1 && (
+                  <TimelineConnector sx={{ background: 'primary.main' }} />
+                )}
+              </TimelineSeparator>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </TimelineWrapper>
+    </Wrapper>
+  </Container>
+);
 
 export default EducationSection;

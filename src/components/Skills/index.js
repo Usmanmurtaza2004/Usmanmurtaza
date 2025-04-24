@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { skills } from '../../data/constants';
 
@@ -116,32 +117,35 @@ const SkillImage = styled.img`
   height: 24px;
 `;
 
-const Skills = () => {
-  return (
-    <Container id="skills">
-      <Wrapper>
-        <Title>Skills</Title>
-        <Desc>
-          Here are some of my skills on which I have been working on for the past 2 years.
-        </Desc>
-        <SkillsContainer>
-          {skills.map((skill) => (
-            <Skill key={skill.title}> {/* Added key here */}
-              <SkillTitle>{skill.title}</SkillTitle>
-              <SkillList>
-                {skill.skills.map((item, index) => (
-                  <SkillItem key={index}> {/* Added key here */}
-                    <SkillImage src={item.image} alt={item.name} /> {/* Added alt attribute */}
-                    {item.name}
-                  </SkillItem>
-                ))}
-              </SkillList>
-            </Skill>
-          ))}
-        </SkillsContainer>
-      </Wrapper>
-    </Container>
-  );
-};
+const Skills = () => (
+  <Container id="skills">
+    <Wrapper>
+      <Title>Skills</Title>
+      <Desc>
+        Here are some of my skills on which I have been working for the past 2&nbsp;years.
+      </Desc>
+
+      <SkillsContainer>
+        {skills.map((skill) => (
+          <Skill key={skill.title}>
+            <SkillTitle>{skill.title}</SkillTitle>
+
+            <SkillList>
+              {skill.skills.map((item) => (
+                <SkillItem key={item.name}>
+                  <SkillImage src={item.image} alt={item.name} />
+                  {item.name}
+                </SkillItem>
+              ))}
+            </SkillList>
+          </Skill>
+        ))}
+      </SkillsContainer>
+    </Wrapper>
+  </Container>
+);
+
+/* ---------- ➋  Blank propTypes object to satisfy eslint/react‑prop‑types ---------- */
+Skills.propTypes = {};
 
 export default Skills;

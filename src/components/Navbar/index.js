@@ -1,62 +1,98 @@
-import React from 'react'
-import { Nav, NavLink, NavbarContainer, Span, NavLogo, NavItems, GitHubButton, ButtonContainer, MobileIcon, MobileMenu, MobileNavLogo, MobileLink } from './NavbarStyledComponent'
+import React, { useState } from 'react';
+import {
+  Nav,
+  NavLink,
+  NavbarContainer,
+  Span,
+  NavLogo,
+  NavItems,
+  GitHubButton,
+  ButtonContainer,
+  MobileIcon,
+  MobileMenu,
+  MobileLink,
+} from './NavbarStyledComponent';
+
 import { DiCssdeck } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
 import { Bio } from '../../data/constants';
-import { Close, CloseRounded } from '@mui/icons-material';
 import { useTheme } from 'styled-components';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
-  
+
+  const toggleMenu = () => setIsOpen(prev => !prev);
+
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to='/'>
-          <a style={{ display: "flex", alignItems: "center", color: "white", marginBottom: '20;', cursor: 'pointer' }}>
-            <DiCssdeck size="3rem" /> <Span>Usman Murtaza's Portfolio</Span> {/* Updated name */}
-          </a>
+        {/* ---------- logo ---------- */}
+        <NavLogo to="/">
+          <span style={{ display: 'flex', alignItems: 'center', color: 'inherit' }}>
+            <DiCssdeck size="3rem" />
+            <Span>Usman&nbsp;Murtaza</Span>
+          </span>
         </NavLogo>
-        <MobileIcon>
-          <FaBars onClick={() => {
-            setIsOpen(!isOpen)
-          }} />
+
+        {/* ---------- mobile icon ---------- */}
+        <MobileIcon aria-label="menu toggle" onClick={toggleMenu}>
+          <FaBars size={24} />
         </MobileIcon>
+
+        {/* ---------- desktop links ---------- */}
         <NavItems>
           <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#experience'>Experience</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#education'>Education</NavLink>
+          <NavLink href="#skills">Skills</NavLink>
+          <NavLink href="#experience">Experience</NavLink>
+          <NavLink href="#projects">Projects</NavLink>
+          <NavLink href="#education">Education</NavLink>
         </NavItems>
+
+        {/* ---------- desktop button ---------- */}
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">GitHub Profile</GitHubButton> {/* Updated GitHub link */}
+          <GitHubButton
+            href={Bio.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub&nbsp;Profile
+          </GitHubButton>
         </ButtonContainer>
-        {
-          isOpen &&
-          <MobileMenu isOpen={isOpen}>
-            <MobileLink href="#about" onClick={() => {
-              setIsOpen(!isOpen)
-            }}>About</MobileLink>
-            <MobileLink href='#skills' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Skills</MobileLink>
-            <MobileLink href='#experience' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Experience</MobileLink>
-            <MobileLink href='#projects' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Projects</MobileLink>
-            <MobileLink href='#education' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Education</MobileLink>
-            <GitHubButton style={{padding: '10px 16px', background: `${theme.primary}`, color: 'white', width: 'max-content'}} href={Bio.github} target="_blank">GitHub Profile</GitHubButton> {/* Updated GitHub link */}
+
+        {/* ---------- mobile menu ---------- */}
+        {isOpen && (
+          <MobileMenu>
+            {[
+              { to: '#about', label: 'About' },
+              { to: '#skills', label: 'Skills' },
+              { to: '#experience', label: 'Experience' },
+              { to: '#projects', label: 'Projects' },
+              { to: '#education', label: 'Education' },
+            ].map(link => (
+              <MobileLink key={link.to} href={link.to} onClick={toggleMenu}>
+                {link.label}
+              </MobileLink>
+            ))}
+
+            <GitHubButton
+              style={{
+                padding: '10px 16px',
+                background: theme.primary,
+                color: '#fff',
+                width: 'max-content',
+              }}
+              href={Bio.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub&nbsp;Profile
+            </GitHubButton>
           </MobileMenu>
-        }
+        )}
       </NavbarContainer>
     </Nav>
-  )
+  );
 }
 
 export default Navbar;

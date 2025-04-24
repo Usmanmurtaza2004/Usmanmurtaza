@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import {
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  LinkedIn as LinkedInIcon,
+  Instagram as InstagramIcon,
+} from '@mui/icons-material';
+
 import { Bio } from '../../data/constants';
+
+/* ---------- styled‑components ---------- */
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -16,61 +21,61 @@ const FooterContainer = styled.div`
 const FooterWrapper = styled.footer`
   width: 100%;
   max-width: 1200px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 14px;
   align-items: center;
-  padding: 1rem;
   color: ${({ theme }) => theme.text_primary};
 `;
 
-const Logo = styled.h1`
-  font-weight: 600;
+const Logo = styled.h2`
   font-size: 20px;
+  font-weight: 600;
   color: ${({ theme }) => theme.primary};
 `;
 
 const Nav = styled.nav`
-  width: 100%;
   max-width: 800px;
+  width: 100%;
   margin-top: 0.5rem;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
+
   @media (max-width: 768px) {
-    flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center;
-    text-align: center;
     font-size: 12px;
   }
 `;
 
 const NavLink = styled.a`
-  color: ${({ theme }) => theme.text_primary};
   text-decoration: none;
   font-size: 1.2rem;
+  color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
+
   @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
 
-const SocialMediaIcons = styled.div`
+const SocialRow = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
 
-const SocialMediaIcon = styled.a`
-  display: inline-block;
+const SocialIcon = styled.a`
   margin: 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
+
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
@@ -83,34 +88,40 @@ const Copyright = styled.p`
   text-align: center;
 `;
 
-function Footer() {
-  const [year, setYear] = useState('');
+/* --------------- component -------------- */
 
-  useEffect(() => {
-    const currentYear = new Date().getFullYear();
-    setYear(currentYear);
-  }, []);
+function Footer() {
+  const year = new Date().getFullYear();
 
   return (
     <FooterContainer>
       <FooterWrapper>
-        <Logo>Usman Murtaza</Logo>
-        <Nav>
+        <Logo>Usman&nbsp;Murtaza</Logo>
+
+        <Nav aria-label="Footer Navigation">
           <NavLink href="#about">About</NavLink>
           <NavLink href="#skills">Skills</NavLink>
           <NavLink href="#experience">Experience</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#education">Education</NavLink>
         </Nav>
-        <SocialMediaIcons>
-          <SocialMediaIcon href={Bio.facebook} target="_blank"><FacebookIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.twitter} target="_blank"><TwitterIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.linkedin} target="_blank"><LinkedInIcon /></SocialMediaIcon>
-          <SocialMediaIcon href={Bio.insta} target="_blank"><InstagramIcon /></SocialMediaIcon>
-        </SocialMediaIcons>
-        <Copyright>
-          &copy; {year} Usman Murtaza. All rights reserved.
-        </Copyright>
+
+        <SocialRow>
+          <SocialIcon href={Bio.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">
+            <FacebookIcon />
+          </SocialIcon>
+          <SocialIcon href={Bio.twitter} target="_blank" rel="noreferrer" aria-label="Twitter">
+            <TwitterIcon />
+          </SocialIcon>
+          <SocialIcon href={Bio.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <LinkedInIcon />
+          </SocialIcon>
+          <SocialIcon href={Bio.insta} target="_blank" rel="noreferrer" aria-label="Instagram">
+            <InstagramIcon />
+          </SocialIcon>
+        </SocialRow>
+
+        <Copyright>&copy; {year} Usman&nbsp;Murtaza.All&nbsp;rights&nbsp;reserved.</Copyright>
       </FooterWrapper>
     </FooterContainer>
   );

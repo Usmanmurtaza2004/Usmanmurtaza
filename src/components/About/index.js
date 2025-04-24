@@ -1,27 +1,59 @@
-import React from 'react'
+import React from 'react';
+import styled from 'styled-components';
 
-const About = () => {
+/* ─── styled wrapper (optional) ─── */
+const Wrapper = styled.section`
+  padding: 60px 0;
+  line-height: 1.6;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  p {
+    margin-bottom: 12px;
+    max-width: 800px;
+  }
+`;
+
+function About() {
   return (
-    <section className="about" id="about">
+    <Wrapper id="about">
       <div className="container">
-        <h2>About Me</h2>
+        <h2>About&nbsp;Me</h2>
+
         <p>
-          Hello! I'm <strong>Usman Murtaza</strong>, a passionate and skilled <strong>Full Stack Developer</strong> based in Karachi, Pakistan. 
-          Currently pursuing a Bachelor's degree in Computer Science (BSCS) at <strong>Ilma University</strong>, I have developed strong skills in 
-          modern web development technologies including <strong>HTML, CSS, JavaScript, React,Oracle and PostgreSQL</strong>.
+          Hello! I&apos;m <strong>Usman&nbsp;Murtaza</strong>, a passionate
+          <strong> Full&nbsp;Stack&nbsp;Developer</strong> based in Karachi,
+          Pakistan. I am currently pursuing a B.S. in Computer Science at&nbsp;
+          <strong>Ilma&nbsp;University</strong> and have developed strong skills
+          in&nbsp;
+          <strong>
+            HTML, CSS, JavaScript, React, Oracle&nbsp;and&nbsp;PostgreSQL
+          </strong>
+          .
         </p>
+
         <p>
-          My journey started with a foundation in science and engineering from <strong>Army Public College</strong> and <strong>Fazaia College</strong>. 
-          Over time, I explored the world of programming and design, becoming proficient in <strong>Visual Studio Code</strong>, 
-          <strong>MS Office</strong>, and graphic designing.
+          My journey began with a foundation in science and engineering at&nbsp;
+          <strong>Army&nbsp;Public&nbsp;College</strong> and&nbsp;
+          <strong>Fazaia&nbsp;College</strong>. Since then I’ve explored the
+          world of programming and design, becoming proficient with&nbsp;
+          <strong>Visual&nbsp;Studio&nbsp;Code</strong>, the&nbsp;
+          <strong>MS&nbsp;Office</strong> suite, and graphic‑design tools.
         </p>
+
         <p>
-          I am fluent in <strong>French</strong>, and I'm working on several exciting projects like my own leather brand website, 
-          <strong>Al Falah Leather</strong>, with modern e-commerce features and international appeal.
+          I am fluent in&nbsp;<strong>French</strong>, and I&apos;m working on
+          several exciting projects, including my own leather‑brand website,&nbsp;
+          <strong>Al&nbsp;Falah&nbsp;Leather</strong>, featuring modern
+          e‑commerce functionality and an international appeal.
         </p>
       </div>
-    </section>
+    </Wrapper>
   );
-};
+}
 
 export default About;

@@ -1,149 +1,178 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
+/* ───────────── styled‑components ───────────── */
 
 const Button = styled.button`
-    display: none;
-    width: 100%;
-    padding: 10px;
-    background-color: ${({ theme }) => theme.white};
-    color: ${({ theme }) => theme.text_black};
-    font-size: 14px;
-    font-weight: 700;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.8s ease-in-out;
-`
+  display: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: ${({ theme }) => theme.white};
+  color: ${({ theme }) => theme.text_black};
+  transition: all 0.8s ease-in-out;
+`;
+
 const Card = styled.div`
-    width: 330px;
-    height: 490px;
-    background-color: ${({ theme }) => theme.card};
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 0 12px 4px rgba(0,0,0,0.4);
-    overflow: hidden;
-    padding: 26px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: all 0.5s ease-in-out;
-    &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
-        filter: brightness(1.1);
-    }
-    &:hover ${Button} {
-        display: block;
-    }
-`
+  width: 330px;
+  height: 490px;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: ${({ theme }) => theme.card};
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+    filter: brightness(1.1);
+    box-shadow: 0 0 50px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  &:hover ${Button} {
+    display: block;
+  }
+`;
 
 const Image = styled.img`
-    width: 100%;
-    height: 180px;
-    background-color: ${({ theme }) => theme.white};
-    border-radius: 10px;
-    box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
-`
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: ${({ theme }) => theme.white};
+  border-radius: 10px;
+  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+`;
 
 const Tags = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 4px;
-`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+`;
 
 const Tag = styled.span`
-    font-size: 12px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.primary};
-    background-color: ${({ theme }) => theme.primary + 15};
-    padding: 2px 8px;
-    border-radius: 10px;
-`
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 10px;
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.primary}26; /* 15‑20% opacity */
+`;
 
 const Details = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    padding: 0px 2px;
-`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 2px;
+`;
+
 const Title = styled.div`
-    font-size: 20px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text_secondary};
-    overflow: hidden;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-`
+  font-size: 20px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_secondary};
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
 
-const Date = styled.div`
-    font-size: 12px;
-    margin-left: 2px;
-    font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 80};
-    @media only screen and (max-width: 768px){
-        font-size: 10px;
-    }
-`
+const DateTxt = styled.div`
+  margin-left: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary}80;
 
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
 
 const Description = styled.div`
-    font-weight: 400;
-    color: ${({ theme }) => theme.text_secondary + 99};
-    overflow: hidden;
-    margin-top: 8px;
-    display: -webkit-box;
-    max-width: 100%;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-`
+  margin-top: 8px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary}99;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
 
 const Members = styled.div`
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-`
-const Avatar = styled.img`
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    margin-left: -10px;
-    background-color: ${({ theme }) => theme.white};
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    border: 3px solid ${({ theme }) => theme.card};
-`
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+`;
 
-const ProjectCards = ({project,setOpenModal}) => {
-    return (
-        <Card onClick={() => setOpenModal({state: true, project: project})}>
-            <Image src={project.image}/>
-            <Tags>
-                {project.tags?.map((tag, index) => (
-                <Tag>{tag}</Tag>
-                ))}
-            </Tags>
-            <Details>
-                <Title>{project.title}</Title>
-                <Date>{project.date}</Date>
-                <Description>{project.description}</Description>
-            </Details>
-            <Members>
-                {project.member?.map((member) => (
-                    <Avatar src={member.img}/>
-                ))}
-            </Members>
-            {/* <Button>View Project</Button> */}
-        </Card>
-    )
+const Avatar = styled.img`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  margin-left: -10px;
+  background: ${({ theme }) => theme.white};
+  border: 3px solid ${({ theme }) => theme.card};
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+`;
+
+/* ───────────── component ───────────── */
+
+function ProjectCards({ project, setOpenModal }) {
+  const handleClick = () =>
+    setOpenModal({ state: true, project });
+
+  return (
+    <Card onClick={handleClick}>
+      <Image src={project.image} alt={project.title} />
+
+      <Tags>
+        {project.tags?.map((tag, i) => (
+          <Tag key={i}>{tag}</Tag>
+        ))}
+      </Tags>
+
+      <Details>
+        <Title>{project.title}</Title>
+        <DateTxt>{project.date}</DateTxt>
+        <Description>{project.description}</Description>
+      </Details>
+
+      <Members>
+        {project.member?.map((m, i) => (
+          <Avatar key={i} src={m.img} alt={m.name ?? `member-${i}`} />
+        ))}
+      </Members>
+
+      {/* Uncomment if you want an explicit button instead of card click */}
+      {/* <Button>View Project</Button> */}
+    </Card>
+  );
 }
 
-export default ProjectCards
+/* ───────────── propTypes ───────────── */
+
+ProjectCards.propTypes = {
+  project: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string,
+    description: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    member: PropTypes.arrayOf(
+      PropTypes.shape({
+        img: PropTypes.string.isRequired,
+        name: PropTypes.string,
+      })
+    ),
+  }).isRequired,
+  setOpenModal: PropTypes.func.isRequired,
+};
+
+export default ProjectCards;
