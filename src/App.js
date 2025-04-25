@@ -47,6 +47,7 @@ function App() {
   const [openModal, setOpenModal] = useState({ state: false, project: null });
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log("App mounted");
   }, []);
 
