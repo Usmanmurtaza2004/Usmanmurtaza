@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { Snackbar, Alert } from '@mui/material';
 
-/* ---------------------------  styled‑components  -------------------------- */
+/* --------------------------- styled‑components --------------------------- */
 
 const Container = styled.div`
   display: flex;
@@ -106,29 +106,39 @@ const Submit = styled.input`
   cursor: pointer;
 `;
 
-/* -------------------------------  component  ------------------------------ */
+/* ------------------------------- component ------------------------------- */
 
 const Contact = () => {
   const formRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
+
     emailjs
       .sendForm(
-        'service_2004',
-        'template_2004',
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        'zi7G3LciN7Dv838Zv'
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
           setOpen(true);
+          setError(false);
           formRef.current.reset();
         },
-        err => console.error(err.text)
+        err => {
+          console.error(err.text);
+          setError(true);
+        }
       );
   };
+
+  if (process.env.NODE_ENV === "development") {
+    console.log("Contact component loaded");
+  }
 
   return (
     <Container id="contact">
@@ -141,19 +151,37 @@ const Contact = () => {
         <Form ref={formRef} onSubmit={handleSubmit} noValidate>
           <Label>Email&nbsp;Me 🚀</Label>
 
-          <Input name="from_email" type="email" placeholder="Your Email" required />
-          <Input name="from_name" placeholder="Your Name" required />
-          <Input name="subject" placeholder="Subject" required />
+          <Input
+            name="from_email"
+            type="email"
+            placeholder="Enter your email"
+            aria-label="Your email"
+            required
+          />
+          <Input
+            name="from_name"
+            placeholder="Your name"
+            aria-label="Your name"
+            required
+          />
+          <Input
+            name="subject"
+            placeholder="Subject"
+            aria-label="Subject"
+            required
+          />
           <TextArea
             name="message"
             rows="4"
-            placeholder="Message"
+            placeholder="Type your message here..."
+            aria-label="Message"
             required
           />
 
           <Submit type="submit" value="Send" />
         </Form>
 
+        {/* Success Snackbar */}
         <Snackbar
           open={open}
           autoHideDuration={5000}
@@ -162,6 +190,18 @@ const Contact = () => {
         >
           <Alert severity="success" onClose={() => setOpen(false)} sx={{ width: '100%' }}>
             Email sent successfully!
+          </Alert>
+        </Snackbar>
+
+        {/* Error Snackbar */}
+        <Snackbar
+          open={error}
+          autoHideDuration={5000}
+          onClose={() => setError(false)}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        >
+          <Alert severity="error" onClose={() => setError(false)} sx={{ width: '100%' }}>
+            Failed to send email. Please try again.
           </Alert>
         </Snackbar>
       </Wrapper>

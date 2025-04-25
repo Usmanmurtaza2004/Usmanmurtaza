@@ -49,11 +49,15 @@ function Projects({ openModal, setOpenModal }) {
 
         <CardContainer>
           {visibleProjects.map((project, idx) => (
-            <ProjectCard
-              key={project.id ?? idx}
-              project={project}
-              setOpenModal={setOpenModal}
-            />
+            <div key={project.id ?? idx}>
+              <ProjectCard
+                project={project}
+                setOpenModal={setOpenModal}
+              />
+              <button onClick={() => openModal(project)}>
+                View Project
+              </button>
+            </div>
           ))}
         </CardContainer>
       </Wrapper>
@@ -63,10 +67,7 @@ function Projects({ openModal, setOpenModal }) {
 
 /* -------- PropTypes to silence react/prop‑types rule -------- */
 Projects.propTypes = {
-  openModal: PropTypes.shape({
-    state: PropTypes.bool,
-    project: PropTypes.object,
-  }),
+  openModal: PropTypes.func.isRequired,
   setOpenModal: PropTypes.func.isRequired,
 };
 

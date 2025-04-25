@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import _default from "../../themes/default";
 
+export default styled.div`
+  // your styles
+`;
+
 export const HeroContainer = styled.div`
   background: ${({ theme }) => theme.card_light};
   display: flex;
@@ -39,6 +43,23 @@ export const HeroBg = styled.div`
   @media (max-width: 960px) {
     justify-content: center;
     padding: 0 0px;
+  }
+`;
+
+export const BioText = styled.p`
+  font-size: 18px;
+  line-height: 28px;
+  color: ${({ theme }) => theme.text_primary};
+  margin-bottom: 30px;
+
+  @media (max-width: 960px) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+    line-height: 22px;
   }
 `;
 

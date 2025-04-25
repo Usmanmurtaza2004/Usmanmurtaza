@@ -88,8 +88,8 @@ export const skills = [
       {
         name: "GraphQL",
         image:
-          "https://upload.wikimedia.org/wikipedia/commons/9/9f/GraphQL_Logo.svg",
-      },
+          "https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg",
+      },      
     ],
   },
   {
@@ -249,27 +249,6 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Brain Tumor Detection",
-    date: "Jan 2023 - Mar 2023",
-    description:
-      "Preprocessed and augmented the dataset to improve model accuracy, trained the model, created API using model and Python, and used React web app for the project's front end. Achievements: Achieved an accuracy of 99.2% to accurately detect brain tumors from medical images.",
-    image:
-      "https://github.com/usmanmurtaza/Brain-Tumor-Detection/raw/main/Readme_resource/Image2.png",  // Updated
-    tags: ["Python", "Keras", "TensorFlow", "VGG16", "Pickle", "React"],
-    category: "machine learning",
-    github: "https://github.com/usmanmurtaza/Brain-Tumor-Detection",  // Updated
-    webapp: "https://brain-tumor.netlify.app/",
-    member: [
-      {
-        name: "Usman Murtaza",
-        img: "https://avatars.githubusercontent.com/u/64485885?v=4",
-        linkedin: "https://www.linkedin.com/in/usmanmurtaza/",  // Updated
-        github: "https://github.com/usmanmurtaza",  // Updated
-      },
-    ],
-  },
-  {
-    id: 3,
     title: "Buckoid",
     date: "Dec 2021 - Apr 2022",
     description:
@@ -282,20 +261,7 @@ export const projects = [
     webapp: "https://play.google.com/store/apps/details?id=com.rishav.buckoid",
   },
   {
-    id: 10,
-    title: "Job Finding App",
-    date: "Jun 2023 - Jul 2023",
-    description:
-      "A Job Finding App made with React Native, Axios. Users can search for any job coming from API and apply there.",
-    image:
-      "https://user-images.githubusercontent.com/64485885/255237090-cf798a2c-1b41-4bb7-b904-b5353a1f08e8.png",
-    tags: ["React Native", "JavaScript", "Axios"],
-    category: "android app",
-    github: "https://github.com/usmanmurtaza/Job-finder-App",  // Updated
-    webapp: "https://github.com/usmanmurtaza/Job-finder-App",  // Updated
-  },
-  {
-    id: 4,
+    id: 3,
     title: "Whatsapp Clone",
     date: "Jul 2021",
     description:
@@ -310,4 +276,26 @@ export const projects = [
   // Further projects and other details can be updated similarly
 ];
 
-
+// constants.js
+export const TimeLineData = [
+  {
+    year: "2024",
+    text: "Started the journey with a basic understanding of JavaScript."
+  },
+  {
+    year: "2024",
+    text: "Learned advanced JavaScript and started building websites."
+  },
+  {
+    year: "2025",
+    text: "Started working as a full-stack developer at Freelancing Platforms."
+  },
+  {
+    year: "2025",
+    text: "Launched my own web development business, focusing on e-commerce websites."
+  },
+  {
+    year: "2025",
+    text: "Started learning React and enhancing skills in web development."
+  }
+];

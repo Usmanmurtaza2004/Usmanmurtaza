@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-/* ───────────── styled‑components ───────────── */
+/* ───────────── styled-components ───────────── */
 
 const Card = styled.div`
   width: 650px;
@@ -21,11 +21,11 @@ const Card = styled.div`
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   }
 
-  /* reveal doc icon + full description on hover */
-  &:hover ${'' /* Document */} {
+  &:hover ${() => Document} {
     display: flex;
   }
-  &:hover ${'' /* Span */} {
+
+  &:hover ${() => Span} {
     overflow: visible;
     -webkit-line-clamp: unset;
   }
@@ -135,6 +135,10 @@ const Document = styled.img`
 /* ───────────── component ───────────── */
 
 function EducationCard({ education }) {
+  useEffect(() => {
+    document.title = "Education Info";
+  }, []);
+
   return (
     <Card>
       <Top>
@@ -155,9 +159,8 @@ function EducationCard({ education }) {
         <Span>{education.desc}</Span>
       </Description>
 
-      {/* Optional downloadable document (uncomment if you have one)
-      <Document src={education.doc} alt="Transcript / Certificate" />
-      */}
+      {/* Uncomment this if you want to show document preview */}
+      {/* <Document src={education.doc} alt="Transcript / Certificate" /> */}
     </Card>
   );
 }
@@ -166,13 +169,13 @@ function EducationCard({ education }) {
 
 EducationCard.propTypes = {
   education: PropTypes.shape({
-    img: PropTypes.string.isRequired,
-    school: PropTypes.string.isRequired,
-    degree: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    school: PropTypes.string,
+    degree: PropTypes.string,
+    date: PropTypes.string,
     grade: PropTypes.string,
     desc: PropTypes.string,
-    doc: PropTypes.string,            // if you use the Document icon
+    doc: PropTypes.string,
   }).isRequired,
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { skills } from '../../data/constants';
+import { skills } from '../../data/constants'; // Importing skills data directly
 
 const Container = styled.div`
   display: flex;
@@ -145,7 +145,10 @@ const Skills = () => (
   </Container>
 );
 
-/* ---------- ➋  Blank propTypes object to satisfy eslint/react‑prop‑types ---------- */
-Skills.propTypes = {};
+Skills.propTypes = {
+  // Since skills data is directly imported, this can be an empty object
+  // or you can remove this entirely as it's not necessary.
+  skillsList: PropTypes.array,
+};
 
 export default Skills;

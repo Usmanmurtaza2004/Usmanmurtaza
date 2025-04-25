@@ -1,0 +1,33 @@
+/* TimelineComponent.css */
+.timeline-section {
+    padding: 40px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .timeline-item {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .timeline-item:hover {
+    transform: translateY(-10px);
+  }
+  
+  .timeline-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .timeline-text {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+  }
+  

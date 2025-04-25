@@ -13,10 +13,11 @@ import {
   SubTitle,
   Img,
   ResumeButton,
+  BioText, // Importing the styled BioText component
 } from './HeroStyle';
 
 import HeroImg from '../../images/HeroImage.png';
-import { Bio } from '../../data/constants'; // ← if you later want social links
+import { Bio } from '../../data/constants'; // ← If you later want social links
 
 function HeroSection() {
   return (
@@ -27,7 +28,7 @@ function HeroSection() {
         </HeroBg>
 
         <HeroInnerContainer>
-          {/* ---------- left ---------- */}
+          {/* ---------- Left Section ---------- */}
           <HeroLeftContainer>
             <Title>
               Hi,&nbsp;I&apos;m <br />
@@ -53,11 +54,13 @@ function HeroSection() {
             </TextLoop>
 
             <SubTitle>
-              I specialize in modern web development, UI/UX and graphic design.
+              I specialize in modern web development, UI/UX, and graphic design.
               Building interactive&nbsp;&amp; dynamic applications is my thing.
             </SubTitle>
 
-            {/* replace ‶/resume.pdf″ with your real file or Drive link */}
+            {/* Displaying Bio with styled component */}
+            <BioText>{Bio}</BioText>
+
             <ResumeButton
               href="https://drive.google.com/file/d/1Pm5g6MX-UqaGQfgHyRQzWAEZzSrm6jNw/view?usp=sharing"
               target="_blank"
@@ -67,7 +70,7 @@ function HeroSection() {
             </ResumeButton>
           </HeroLeftContainer>
 
-          {/* ---------- right ---------- */}
+          {/* ---------- Right Section ---------- */}
           <HeroRightContainer>
             <Img src={HeroImg} alt="Illustration of Usman coding" />
           </HeroRightContainer>

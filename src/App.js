@@ -14,7 +14,9 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
+import Timeline from './TimelineComponent'; // Assuming TimelineComponent is the name of the file
 
+// Styled Components
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
   width: 100%;
@@ -22,12 +24,12 @@ const Body = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background: linear-gradient(38.73deg, rgba(204, 0, 187, 0.15) 0%, rgba(201, 32, 184, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%);
+  background: linear-gradient(38.73deg, rgba(204, 0, 187, 0.15) 0%, rgba(201, 32, 184, 0) 50%), 
+              linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%);
   width: 100%;
   clip-path: polygon(0 0, 100% 0, 100% 100%,30% 98%, 0 100%);
 `;
 
-// Theme toggle button styles
 const ToggleButton = styled.button`
   background-color: ${({ theme }) => theme.primary};
   color: ${({ theme }) => theme.text_primary};
@@ -41,15 +43,17 @@ const ToggleButton = styled.button`
 `;
 
 function App() {
-  // Load the theme from localStorage on initial load, else default to darkMode true
-  const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark' ? true : false);
+  const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark');
   const [openModal, setOpenModal] = useState({ state: false, project: null });
 
-  // Toggle theme and store the preference in localStorage
+  useEffect(() => {
+    console.log("App mounted");
+  }, []);
+
   const toggleTheme = () => {
     setDarkMode((prev) => {
       const newMode = !prev;
-      localStorage.setItem('theme', newMode ? 'dark' : 'light'); // Save preference to localStorage
+      localStorage.setItem('theme', newMode ? 'dark' : 'light');
       return newMode;
     });
   };
@@ -60,6 +64,7 @@ function App() {
         <Navbar />
         <Body>
           <HeroSection />
+          <About /> {/* About component added here */}
           <Wrapper>
             <Skills />
             <Experience />
@@ -70,15 +75,15 @@ function App() {
             <Contact />
           </Wrapper>
           <Footer />
-          {openModal.state &&
+          {openModal.state && (
             <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />
-          }
+          )}
         </Body>
-        
-        {/* Theme toggle button */}
+
         <ToggleButton onClick={toggleTheme}>
           {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         </ToggleButton>
+        <Timeline />
       </Router>
     </ThemeProvider>
   );
