@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/usman-murtaza-portfolio/static/css/main.b483f3fd.css",
-    "main.js": "/usman-murtaza-portfolio/static/js/main.7dbcf5a8.js",
+    "main.js": "/usman-murtaza-portfolio/static/js/main.4b5945b6.js",
     "static/media/HeroImage.png": "/usman-murtaza-portfolio/static/media/HeroImage.fafc207d9ddd413e4cab.png",
     "index.html": "/usman-murtaza-portfolio/index.html",
     "main.b483f3fd.css.map": "/usman-murtaza-portfolio/static/css/main.b483f3fd.css.map",
-    "main.7dbcf5a8.js.map": "/usman-murtaza-portfolio/static/js/main.7dbcf5a8.js.map"
+    "main.4b5945b6.js.map": "/usman-murtaza-portfolio/static/js/main.4b5945b6.js.map"
   },
   "entrypoints": [
     "static/css/main.b483f3fd.css",
-    "static/js/main.7dbcf5a8.js"
+    "static/js/main.4b5945b6.js"
   ]
 }
