@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Usmanmurtaza/static/css/main.b483f3fd.css",
-    "main.js": "/Usmanmurtaza/static/js/main.63fa2151.js",
+    "main.js": "/Usmanmurtaza/static/js/main.f0788f96.js",
     "static/media/HeroImage.png": "/Usmanmurtaza/static/media/HeroImage.fafc207d9ddd413e4cab.png",
     "index.html": "/Usmanmurtaza/index.html",
     "main.b483f3fd.css.map": "/Usmanmurtaza/static/css/main.b483f3fd.css.map",
-    "main.63fa2151.js.map": "/Usmanmurtaza/static/js/main.63fa2151.js.map"
+    "main.f0788f96.js.map": "/Usmanmurtaza/static/js/main.f0788f96.js.map"
   },
   "entrypoints": [
     "static/css/main.b483f3fd.css",
-    "static/js/main.63fa2151.js"
+    "static/js/main.f0788f96.js"
   ]
 }
