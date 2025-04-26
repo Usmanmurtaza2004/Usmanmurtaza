@@ -113,7 +113,7 @@ const Contact = () => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs
@@ -129,17 +129,12 @@ const Contact = () => {
           setError(false);
           formRef.current.reset();
         },
-        err => {
-          if (process.env.NODE_ENV === "development")           
-          console.error(err.text);
+
+        () => {
           setError(true);
         }
       );
   };
-
-  if (process.env.NODE_ENV === "development") {
-    console.log("Contact component loaded");
-  }
 
   return (
     <Container id="contact">
@@ -150,7 +145,7 @@ const Contact = () => {
         </Desc>
 
         <Form ref={formRef} onSubmit={handleSubmit} noValidate>
-          <Label>Email&nbsp;Me 🚀</Label>
+          <Label> Email&nbsp;Me 🚀 </Label>
 
           <Input
             name="from_email"
