@@ -130,6 +130,7 @@ const Contact = () => {
           formRef.current.reset();
         },
         err => {
+          if (process.env.NODE_ENV === "development")           
           console.error(err.text);
           setError(true);
         }
