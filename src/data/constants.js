@@ -276,7 +276,6 @@ export const projects = [
   // Further projects and other details can be updated similarly
 ];
 
-// constants.js
 export const TimeLineData = [
   {
     year: "2024",

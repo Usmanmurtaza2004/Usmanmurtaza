@@ -14,7 +14,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
-import Timeline from './TimelineComponent'; // Assuming TimelineComponent is the name of the file
+import Timeline from './components/TimelineComponent/TimelineComponent';
 
 // Styled Components
 const Body = styled.div`

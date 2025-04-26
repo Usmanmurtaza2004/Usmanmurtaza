@@ -1,6 +1,6 @@
 import React from 'react';
-import { TimeLineData } from './constants.js';  // Import the TimeLineData from constants.js
-import './TimelineComponent.css'; // Import the associated CSS file
+import { TimeLineData } from '../../data/constants';  // Adjusted the import path
+import './TimelineComponent.css'; // Make sure this CSS file exists
 
 const Timeline = () => {
   return (

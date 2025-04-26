@@ -10,7 +10,7 @@ import {
   ButtonContainer,
   MobileIcon,
   MobileMenu,
-  MobileLink,
+  MobileMenuLink, // ✅ Corrected import here
 } from './NavbarStyledComponent';
 
 import { DiCssdeck } from 'react-icons/di';
@@ -62,7 +62,7 @@ function Navbar() {
 
         {/* ---------- mobile menu ---------- */}
         {isOpen && (
-          <MobileMenu>
+          <MobileMenu isOpen={isOpen}>
             {[
               { to: '#about', label: 'About' },
               { to: '#skills', label: 'Skills' },
@@ -70,9 +70,9 @@ function Navbar() {
               { to: '#projects', label: 'Projects' },
               { to: '#education', label: 'Education' },
             ].map(link => (
-              <MobileLink key={link.to} href={link.to} onClick={toggleMenu}>
+              <MobileMenuLink key={link.to} to={link.to} onClick={toggleMenu}>
                 {link.label}
-              </MobileLink>
+              </MobileMenuLink>
             ))}
 
             <GitHubButton

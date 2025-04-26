@@ -1,13 +1,12 @@
 import { Link as LinkR } from 'react-router-dom';
 import styled from 'styled-components';
-import _default from '../../themes/default';
 
-
+// You can style a wrapper div if needed
 export default styled.div`
-  // your styles
+  // Optional: Your default wrapper styles
 `;
 
-
+// Navbar main container
 export const Nav = styled.div`
   background-color: ${({ theme }) => theme.card_light};
   height: 80px;
@@ -18,7 +17,7 @@ export const Nav = styled.div`
   position: sticky;
   top: 0;
   z-index: 10;
-  transition: 0.8s all ease; /* Fixed typo: 'trastion' -> 'transition' */
+  transition: 0.8s all ease;
 
   @media (max-width: 960px) {
     transition: 0.8s all ease;
