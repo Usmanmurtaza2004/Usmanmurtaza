@@ -1,8 +1,8 @@
 {
-  "name": "usman-murtaza-portfolio",
+  "name": "usmanmurtaza",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://usmanmurtaza2004.github.io/usman-murtaza-portfolio",
+  "homepage": "https://usmanmurtaza2004.github.io/Usmanmurtaza",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.0",
